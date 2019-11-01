@@ -1,0 +1,610 @@
+CalculationCondition{ //calculation settings
+	OMPnumThreads = 2 
+	itermax    = 500000		//maximum iteration 
+	numberOfBeams = 24 
+	DiameterofStent = 5e0         //Diameter of stent 
+	//N     = 275         //Number of nodes on a wire 
+	//NW1   = 12           //Number of wires(right) 
+	//NW2   = 12           //Number of wires(left) 
+	//discritization_mesh   = 6 
+	AneurysmFriction = 1e-2 
+	CoilFriction = 8e-1 
+	CoefficientOfRestitution = 1e-1 
+	MinimumSlidingVelocity = 1e-2 
+	StickFrictionViscosCoefficient = 1e-1 
+
+	Restart ="no" 
+		RestartNumber = 110 
+		RestartFile = "pressure_pitch_45_20190904_02.h5" 
+		//RestartFile = "test.h5"
+}
+
+Output{ 
+	recordInterval = 1e-2	//output time interval
+	outputDir   = "Results_curve_deformation_pitch_45_20191017" 	//output directory
+	fileName = "test" 
+}
+
+
+//catheter-----------------------------------------------------------------------------
+CalculationCondition_catheter{ //calculation settings
+	itermax_catheter    = 500000		//maximum iteration 
+	DiameterofCatheter = 0.7e0         //Diameter of stent 
+
+	Restart_catheter ="no" 
+		RestartNumber_catheter = 110 
+		RestartFile_catheter = "pressure_pitch_45_20190904_02.h5" 
+		//RestartFile = "test.h5"
+
+} 
+
+Output_catheter{ 
+	outputDir_catheter   = "Results_catheter" 	//output directory
+	fileName_catheter = "test_catheter" 
+}
+//-------------------------------------------------------------------------------------
+
+wallDomain{
+	GlobalOrigin=(-1e0,-7e-1,-8e0)
+	GlobalLength=(23e0,1.4e0,46e0)
+	GlobalVoxel=(100,7,150)
+	sdfFile="test/sdf_0-0-0.bin"
+}
+
+wallDomain_catheter{
+	sdfFile="test/sdf_0-0-0.bin"
+}
+
+
+Beam24{
+	nodeFile  = "Catheter/Beam24/node.dat"
+	nodeReferenceFile  = "Catheter/Beam24/node.dat"
+	elementFile  = "Catheter/Beam24/element.dat"
+	Boundary{
+		force="Catheter/Beam24/externalF.dat"
+		torque="Catheter/Beam24/externalT.dat"
+		mask_u="Catheter/Beam24/mask1.dat"
+		mask_q="Catheter/Beam24/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+
+
+Beam0{
+	nodeFile  = "MultipleBeams_24beams/Beam0/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam0/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam0/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam0/externalF.dat"
+		torque="MultipleBeams_24beams/Beam0/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam0/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam0/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam1{
+	nodeFile  = "MultipleBeams_24beams/Beam1/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam1/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam1/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam1/externalF.dat"
+		torque="MultipleBeams_24beams/Beam1/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam1/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam1/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam2{
+	nodeFile  = "MultipleBeams_24beams/Beam2/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam2/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam2/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam2/externalF.dat"
+		torque="MultipleBeams_24beams/Beam2/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam2/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam2/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam3{
+	nodeFile  = "MultipleBeams_24beams/Beam3/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam3/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam3/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam3/externalF.dat"
+		torque="MultipleBeams_24beams/Beam3/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam3/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam3/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam4{
+	nodeFile  = "MultipleBeams_24beams/Beam4/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam4/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam4/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam4/externalF.dat"
+		torque="MultipleBeams_24beams/Beam4/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam4/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam4/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam5{
+	nodeFile  = "MultipleBeams_24beams/Beam5/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam5/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam5/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam5/externalF.dat"
+		torque="MultipleBeams_24beams/Beam5/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam5/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam5/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam6{
+	nodeFile  = "MultipleBeams_24beams/Beam6/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam6/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam6/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam6/externalF.dat"
+		torque="MultipleBeams_24beams/Beam6/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam6/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam6/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam7{
+	nodeFile  = "MultipleBeams_24beams/Beam7/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam7/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam7/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam7/externalF.dat"
+		torque="MultipleBeams_24beams/Beam7/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam7/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam7/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam8{
+	nodeFile  = "MultipleBeams_24beams/Beam8/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam8/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam8/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam8/externalF.dat"
+		torque="MultipleBeams_24beams/Beam8/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam8/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam8/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam9{
+	nodeFile  = "MultipleBeams_24beams/Beam9/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam9/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam9/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam9/externalF.dat"
+		torque="MultipleBeams_24beams/Beam9/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam9/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam9/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam10{
+	nodeFile  = "MultipleBeams_24beams/Beam10/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam10/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam10/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam10/externalF.dat"
+		torque="MultipleBeams_24beams/Beam10/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam10/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam10/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam11{
+	nodeFile  = "MultipleBeams_24beams/Beam11/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam11/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam11/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam11/externalF.dat"
+		torque="MultipleBeams_24beams/Beam11/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam11/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam11/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam12{
+	nodeFile  = "MultipleBeams_24beams/Beam12/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam12/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam12/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam12/externalF.dat"
+		torque="MultipleBeams_24beams/Beam12/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam12/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam12/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam13{
+	nodeFile  = "MultipleBeams_24beams/Beam13/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam13/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam13/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam13/externalF.dat"
+		torque="MultipleBeams_24beams/Beam13/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam13/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam13/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam14{
+	nodeFile  = "MultipleBeams_24beams/Beam14/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam14/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam14/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam14/externalF.dat"
+		torque="MultipleBeams_24beams/Beam14/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam14/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam14/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam15{
+	nodeFile  = "MultipleBeams_24beams/Beam15/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam15/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam15/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam15/externalF.dat"
+		torque="MultipleBeams_24beams/Beam15/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam15/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam15/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam16{
+	nodeFile  = "MultipleBeams_24beams/Beam16/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam16/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam16/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam16/externalF.dat"
+		torque="MultipleBeams_24beams/Beam16/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam16/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam16/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam17{
+	nodeFile  = "MultipleBeams_24beams/Beam17/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam17/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam17/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam17/externalF.dat"
+		torque="MultipleBeams_24beams/Beam17/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam17/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam17/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam18{
+	nodeFile  = "MultipleBeams_24beams/Beam18/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam18/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam18/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam18/externalF.dat"
+		torque="MultipleBeams_24beams/Beam18/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam18/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam18/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam19{
+	nodeFile  = "MultipleBeams_24beams/Beam19/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam19/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam19/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam19/externalF.dat"
+		torque="MultipleBeams_24beams/Beam19/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam19/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam19/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam20{
+	nodeFile  = "MultipleBeams_24beams/Beam20/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam20/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam20/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam20/externalF.dat"
+		torque="MultipleBeams_24beams/Beam20/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam20/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam20/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam21{
+	nodeFile  = "MultipleBeams_24beams/Beam21/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam21/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam21/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam21/externalF.dat"
+		torque="MultipleBeams_24beams/Beam21/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam21/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam21/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam22{
+	nodeFile  = "MultipleBeams_24beams/Beam22/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam22/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam22/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam22/externalF.dat"
+		torque="MultipleBeams_24beams/Beam22/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam22/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam22/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+
+Beam23{
+	nodeFile  = "MultipleBeams_24beams/Beam23/node.dat"
+	nodeReferenceFile  = "MultipleBeams_24beams/Beam23/node.dat"
+	elementFile  = "MultipleBeams_24beams/Beam23/element.dat"
+	Boundary{
+		force="MultipleBeams_24beams/Beam23/externalF.dat"
+		torque="MultipleBeams_24beams/Beam23/externalT.dat"
+		mask_u="MultipleBeams_24beams/Beam23/mask1.dat"
+		mask_q="MultipleBeams_24beams/Beam23/mask2.dat"
+	}
+
+	PhysicalCondition{ //pysical constant values
+		rho 	 = 9.13e-6		//density
+		mu  	 = 1e2		//Coefficient of viscosity
+		radius  = 2e-2		//Radius
+		wireDiameter  = 4e-2
+		Young   = 225e3	 //(N/mm^2)
+		G       = 98e3   //modulus of rigidity (N/mm^2)
+	}
+}
+
+

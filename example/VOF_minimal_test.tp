@@ -1,0 +1,29 @@
+"DomainInfo" {
+    "GlobalDivision" = (1,1,1)
+    "GlobalOrigin" = (-1e0,-5e-1,-10e0)
+    "GlobalRegion" = (21e0,1e0,52e0)
+    "GlobalVoxel" = (210,10,520)
+}
+"Mesh" {
+    "filename" = "stl/stl_deformation_curve_D_7e-1mm_R_7mm"
+    "filePath" = "straight_D_7e-1mm.stl"
+    "format" = "stl"
+    "type" = "binary"
+}
+"region0" {
+    "GlobalLocation" = (0,0,0)
+    "GlobalVoxelOrigin" = (-1.000000,-0.500000,-10.000000)
+    "NumOfVoxel" = (210,10,520)
+}
+"VOF" {
+    "createVOF" = "on"
+    "insideOut" = "OFF"
+    "isoSurface" = 0.0e-0
+    "outputDir" = "test"
+    "outputFormat" = "vof"
+    "outputSDF" = "on"
+    "outputVOF" = "on"
+    "reinitFMM" = "on"
+    "type" = "binary"
+    "visualizeFormat" = "vti"
+}

@@ -1,0 +1,12 @@
+/.vscode/
+bin
+obj
+*.vti
+*.a
+*.o
+*.d
+*.out
+*.nqs
+*.h5
+stl_curve_*
+Results_*

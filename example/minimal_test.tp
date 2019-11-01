@@ -1,0 +1,29 @@
+Mesh
+{
+   filePath    = "straight_D_7e-1mm_catheter.stl"
+   format      = "stl"
+   type        = "binary"
+   filename    = "stl/stl_curve_D_7e-1_mm_R_7mm_catheter"
+}
+
+DomainInfo {
+  GlobalOrigin        = (-1e0, -7e-1, -8e0)
+  GlobalRegion        = (23e0, 1.4e0, 46e0)
+  GlobalVoxel         = (100,7,150)	//0.4 mm
+  GlobalDivision      = (1,1,1)
+}
+
+
+VOF
+{
+    type              = "binary"
+    reinitFMM         = "on"
+    createVOF         = "on"
+    outputDir         = "test"
+    outputSDF         = "on"
+    outputVOF         = "on"
+    outputFormat      = "vof"
+    visualizeFormat   = "vti"
+    isoSurface  = 0.0e-0
+    insideOut   = "OFF" 
+}
